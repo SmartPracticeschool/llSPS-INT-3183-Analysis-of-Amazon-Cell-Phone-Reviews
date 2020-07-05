@@ -17,11 +17,11 @@ def predict():
     For rendering results in the html page.
     '''
 
-    review = request.form.values['review']
+    review = request.form['review']
 
     with open('countvectorizer', 'rb') as fout:
         cv = pickle.load(fout)
-        X = cv.transform([review])
+        X = cv.transform([review]).toarray()
         pred = model.predict(X)
         if pred > 0.5:
             prediction_text = 'This is a positive review.'
@@ -30,4 +30,4 @@ def predict():
     return render_template('index.html', prediction_text = prediction_text)
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run()
