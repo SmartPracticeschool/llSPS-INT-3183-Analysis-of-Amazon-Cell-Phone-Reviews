@@ -11,7 +11,7 @@ def home() -> 'html':
     return render_template('index.html')
 
 
-@app.route('/ratings', methods = ['POST'])
+@app.route('/rating', methods = ['POST'])
 def predict():
     '''
     For rendering results in the html page.
