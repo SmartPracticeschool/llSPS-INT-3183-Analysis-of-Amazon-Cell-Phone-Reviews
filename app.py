@@ -1,5 +1,5 @@
 import numpy as np
-from keras.models import load_model
+import tensorflow.keras.models as models
 from flask import Flask, request, render_template
 import pickle
 
@@ -24,9 +24,9 @@ def predict():
         X = cv.transform([review])
         pred = model.predict(X)
         if pred > 0.5:
-            prediction_text = 'This is a positive review '
+            prediction_text = 'This is a positive review.'
         else:
-            prediction_text = 'This is a negative review '
+            prediction_text = 'This is a negative review.'
     return render_template('index.html', prediction_text = prediction_text)
 
 if __name__ == '__main__':
