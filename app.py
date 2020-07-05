@@ -19,14 +19,14 @@ def predict():
 
     review = request.form.values['review']
 
-    with open('final_model', 'rb') as fout:
-        cv, model = pickle.load(fout)
+    with open('countvectorizer', 'rb') as fout:
+        cv = pickle.load(fout)
         X = cv.transform([review])
         pred = model.predict(X)
         if pred > 0.5:
             prediction_text = 'This is a positive review '
         else:
-            prediction_text = 'This is a negative review'
+            prediction_text = 'This is a negative review '
     return render_template('index.html', prediction_text = prediction_text)
 
 if __name__ == '__main__':
