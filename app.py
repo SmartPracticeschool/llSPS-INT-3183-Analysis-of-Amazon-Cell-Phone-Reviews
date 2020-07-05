@@ -27,7 +27,7 @@ def predict():
             prediction_text = 'This is a positive review.'
         else:
             prediction_text = 'This is a negative review.'
-    return render_template('index.html', prediction_text = prediction_text)
+    return render_template('index.html', prediction_text = prediction_text, review_text = review )
 
 if __name__ == '__main__':
     app.run()
